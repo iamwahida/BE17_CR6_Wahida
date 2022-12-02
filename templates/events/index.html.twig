@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events index{% endblock %}
+
+{% block body %}
+<h1 style="margin-top:30px;margin-bottom:30px; text-align: center;">Events in Vienna</h1>
+
+<div class="container d-flex justify-content-center">
+        <div class="row row-cols-1 row-cols-lg-5 gap-2 d-flex justify-content-center">
+            {% for event in events %}
+            <div class="card mt-4 mb-4" style="width: 25rem;">
+                <img src="{{ event.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ event.name }}</h5>
+                  <p class="card-text">{{ event.description }}</p>
+                  <button type="button" class="btn btn-outline-warning">
+                    <a href="{{ path('app_events_show', {'id': event.id}) }}">Details</a></button>
+                  <a class="edit" href="{{ path('app_events_edit', {'id': event.id}) }}">Edit</a>
+                </div>
+              </div>
+        {% endfor %}
+           
+        </div>
+    </div>
+
+    <a class="create" href="{{ path('app_events_new') }}">Create a new event</a>
+{% endblock %}
