@@ -9,6 +9,7 @@
         <div class="row row-cols-1 row-cols-lg-5 gap-3 d-flex justify-content-center">
             {% for event in events %}
             <div class="card animate__animated animate__backInLeft mt-4 mb-4 shadow-lg p-3 mb-5 bg-body rounded border border-danger border-start-0" style="width: 25rem;">
+              {# <img src="{{ asset('pictures/'~ event.image)}}" #}
                 <img src="{{event.image}}" class="card-img-top" alt="image">
                 <div class="card-body">
                   <h5 class="card-title">{{ event.name }}</h5>
