@@ -3,64 +3,33 @@
 {% block title %}Events{% endblock %}
 
 {% block body %}
-    <h1>Events</h1>
+    <h1 style="margin-top:30px;margin-bottom:30px; text-align: center;">Events</h1>
+    <div class="container d-flex justify-content-center">
+        <div class="card animate__animated animate__backInRight mb-5 shadow-lg p-3 mb-5 bg-body rounded border border-danger border-start-0" style="width: 30rem;">
+            <img src="{{ event.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ event.name }}</h5>
+              <p class="card-text">{{ event.description }}</p>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Event id: </strong> {{ event.id }}</li>
+              <li class="list-group-item"><strong>Date: </strong> {{ event.date ? event.date|date('Y-m-d') : '' }}</li>
+              <li class="list-group-item"><strong>Time: </strong>{{ event.time ? event.time|date('H:i:s') : '' }}</li>
+              <li class="list-group-item"><strong>Capcity: </strong> {{ event.capacity }} people</li>
+              <li class="list-group-item"><strong>E-Mail:</strong> {{ event.email }}</li>
+              <li class="list-group-item"><strong>Phone Number: </strong> {{ event.pnumber }}</li>
+              <li class="list-group-item"><strong>Address: </strong> {{ event.address }}</li>
+              <li class="list-group-item"><strong>URL of the event: </strong> {{ event.url }}</li>
+              <li class="list-group-item"><strong>Type: </strong> {{ event.type }}</li>
+            </ul>
+            <div class="card-body d-flex justify-content-center">
+           <a style="margin-right:20px;" class="btn btn-outline-danger mb-3" href="{{ path('app_events_edit', {'id': event.id}) }}">Edit</a>
+           {{ include('events/_delete_form.html.twig') }}
+            </div>
+          </div>
+    </div>
+           
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ event.name }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ event.date ? event.date|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Time</th>
-                <td>{{ event.time ? event.time|date('H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ event.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ event.image }}</td>
-            </tr>
-            <tr>
-                <th>Capacity</th>
-                <td>{{ event.capacity }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ event.email }}</td>
-            </tr>
-            <tr>
-                <th>Pnumber</th>
-                <td>{{ event.pnumber }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ event.address }}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ event.url }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ event.type }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_events_index') }}">back to list</a>
 
-    <a href="{{ path('app_events_edit', {'id': event.id}) }}">edit</a>
-
-    {{ include('events/_delete_form.html.twig') }}
 {% endblock %}
